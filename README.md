@@ -88,3 +88,4 @@ table = Table([
 
 ---
 
+More details : [table](https://github.com/PyxTerm/xTerm/blob/main/docs/table.md)
