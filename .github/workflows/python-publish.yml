@@ -75,7 +75,7 @@ jobs:
         git commit -m 'version Update Mode'
         git push origin main
 
-    - name: Build xterm Package
+    - name: Build xTerm Package
       run: |
         python setup.py sdist bdist_wheel
 
