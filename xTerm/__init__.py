@@ -2,7 +2,7 @@ from .Alpha import Maths, FontManager
 from .Terminal import Table
 
 __all__ = ["Maths", "FontManager", "Table"]
-__version__ = "1.0.6"
+__version__ = "1.0.9"
 __author__ = "Mmdrza"
 __license__ = "MIT"
 __copyright__ = "Copyright 2024, Mmdrza.Com"
