@@ -12,7 +12,7 @@ def getReadme():
 
 setup(
     name='xterm',
-    version='1.0.3',
+    version="1.0.6",
     description='A Python Package For Font Unicode Conversion',
     author='Mmdrza',
     author_email='Pymmdrza@Gmail.Com',
