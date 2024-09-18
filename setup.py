@@ -1,13 +1,13 @@
 from setuptools import setup
-import os, subprocess
+import os
 
 
 # Define a function to run after installation to generate _utils.py
-def post_install() -> None:
-    # Check if _utils.py exists or not
-    if not os.path.exists('_utils.py'):
-        # Execute _gen.py to generate _utils.py
-        subprocess.run(['python', '_gen.py'])
+def getReadme():
+    current = os.path.dirname(os.path.realpath(__file__))
+    fPath = os.path.join(current, "README.md")
+    with open(fPath, 'r') as fm:
+        return fm.read()
 
 
 setup(
@@ -17,14 +17,8 @@ setup(
     author='Mmdrza',
     author_email='Pymmdrza@Gmail.Com',
     packages=['xterm'],
-    install_requires=[
-        # Add dependencies here if you have any
-    ],
-    entry_points={
-        'console_scripts': [
-            # Define the post-install script to run
-        ],
-    },
+    install_requires=[],
+    entry_points={'console_scripts': []},
     python_requires='>=3.7',
     # Add any other keywords for your package here
     keywords=['xterm', 'font', 'unicode', 'conversion'],
@@ -36,13 +30,12 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
     ],
-    long_description=open('README.md').read(),
+    long_description=getReadme(),
     long_description_content_type='text/markdown',
-    url='https://github.com/pyxTerm/xTerm',
-    classmethods=['install', post_install()],
+    url='https://github.com/PyxTerm/xTerm',
     project_urls={
-        'Source Code': 'https://github.com/pyxTerm/xTerm',
-        'Bug Tracker': 'https://github.com/pyxTerm/xTerm/issues',
+        'Source Code': 'https://github.com/PyxTerm/xTerm',
+        'Bug Tracker': 'https://github.com/PyxTerm/xTerm/issues',
     },
     zip_safe=False
 
