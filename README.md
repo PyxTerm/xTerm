@@ -1,4 +1,5 @@
-![](https://avatars.githubusercontent.com/u/180863253?s=128)
+<img src="https://raw.githubusercontent.com/PyxTerm/xTerm/main/.github/workflows/Typographic.png" title="xterm Python Package" alt="python Package xTerm" width="auto" height="auto"> 
+
 # xTerm
 ## Install
 
