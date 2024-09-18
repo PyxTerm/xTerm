@@ -16,12 +16,11 @@ setup(
     description='A Python Package For Font Unicode Conversion',
     author='Mmdrza',
     author_email='Pymmdrza@Gmail.Com',
-    packages=['xterm'],
     install_requires=[],
     entry_points={'console_scripts': []},
     python_requires='>=3.7',
     # Add any other keywords for your package here
-    keywords=['xterm', 'font', 'unicode', 'conversion'],
+    keywords=['xterm', 'xTerm', 'terminal', 'xterminal', 'font', 'unicode', 'conversion'],
     license='MIT License',
     classifiers=[
         'License :: OSI Approved :: MIT License',
