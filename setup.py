@@ -1,41 +1,46 @@
-from setuptools import setup
-import os
+from setuptools import setup, find_packages
+import os, re
 
 
-# Define a function to run after installation to generate _utils.py
-def getReadme():
-    current = os.path.dirname(os.path.realpath(__file__))
-    fPath = os.path.join(current, "README.md")
-    with open(fPath, 'r') as fm:
-        return fm.read()
+def readme(file_name: str):
+    with open(os.path.join(os.path.dirname(__file__), file_name)) as f:
+        return f.read()
 
+
+PACK_DATA = {
+    "NAME": "xTerm",
+    "AUTHOR": "Mmdrza",
+    "AUTHOR_EMAIL": "Pymmdrza@gmail.com",
+    "DESCRIPTION": "Professional modding to the terminal and changing the font of string texts",
+    "LONG_DESCRIPTION": readme("README.md"),
+    "LICENSE": "MIT",
+    "URL": "https://github.com/xTerm/xTerm",
+    "PACK_ISSUES": "https://github.com/xTerm/xTerm/issues",
+    "PACK_GITHUB": "https://github.com/xTerm/xTerm",
+    "LONG_DESCRIPTION_CONTENT_TYPE": "text/markdown",
+    "CLASSIFIERS": [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    "PYTHON_REQUIRES": ">=3.7",
+}
 
 setup(
-    name='xTerm',
+    name=PACK_DATA["NAME"],
     version="1.3.0",
-    description='A Python Package For Font Unicode Conversion',
-    author='Mmdrza',
-    author_email='Pymmdrza@Gmail.Com',
+    packages=find_packages(),
     install_requires=[],
-    entry_points={'console_scripts': []},
-    python_requires='>=3.7',
-    # Add any other keywords for your package here
-    keywords=['xterm', 'xTerm', 'terminal', 'xterminal', 'font', 'unicode', 'conversion'],
-    license='MIT License',
-    classifiers=[
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-    ],
-    long_description=getReadme(),
-    long_description_content_type='text/markdown',
-    url='https://github.com/PyxTerm/xTerm',
-    project_urls={
-        'Source Code': 'https://github.com/PyxTerm/xTerm',
-        'Bug Tracker': 'https://github.com/PyxTerm/xTerm/issues',
-    },
-    zip_safe=False
+    test_suite='tests',
+    author=PACK_DATA["AUTHOR"],
+    author_email=PACK_DATA["AUTHOR_EMAIL"],
+    description=PACK_DATA["DESCRIPTION"],
+    long_description=PACK_DATA["LONG_DESCRIPTION"],
+    long_description_content_type=PACK_DATA["LONG_DESCRIPTION_CONTENT_TYPE"],
+    license=PACK_DATA["LICENSE"],
+    url=PACK_DATA["URL"],
+    classifiers=PACK_DATA["CLASSIFIERS"],
+    python_requires=PACK_DATA["PYTHON_REQUIRES"],
+    include_package_data=True
 
 )
