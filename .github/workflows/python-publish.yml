@@ -1,4 +1,4 @@
-name: cryptoFuzz Package
+name: xTerm Package
 
 on:
   push:
