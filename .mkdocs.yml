@@ -1,0 +1,39 @@
+site_name: xTerm
+site_author: 'Pymmdrza@gmail.com'
+repo_url: 'https://github.com/PyxTerm/xTerm'
+site_description: 'Professional modding to the terminal and changing the font of string texts , Insert Any Table Your contents'
+site_url: 'https://github.com/PyxTerm/xTerm'
+copyright: 'Copyright © 2024, Pymmdrza'
+
+nav:
+    - Home: index.md
+    - Table: table.md
+    - Mmdrza.Com: 'https://mmdrza.com'
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+    absolute_links: info
+  links:
+    not_found: warn
+    absolute_links: info
+    unrecognized_links: info
+theme:
+  name: readthedocs
+  locale: en
+  collapse_by_default: false
+  include_homepage_in_sidebar: true
+  features:
+    - navigation.tabs
+    - navigation.instant
+
+plugins:
+  - search:
+      indexing: 'full'
+
+markdown_extensions:
+  - smarty
+  - toc:
+      permalink: true
+      separator: "-"
+  - sane_lists
