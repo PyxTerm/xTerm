@@ -1,6 +1,52 @@
-![](https://avatars.githubusercontent.com/u/180863253?s=128)
+<img src="https://raw.githubusercontent.com/PyxTerm/xTerm/main/.github/workflows/Typographic.png" title="xterm Python Package" alt="python Package xTerm" width="auto" height="auto"> 
+
 # xTerm
 
+
+## Install
+
+Windows Install with `pip`
+
+```bash
+pip install xTerm
+```
+
+Linux Install with `pip3`
+
+```bash
+pip3 install xTerm
+```
+
+Upgrade xterm Python Package : `pip install --upgrade xTerm` or `pip3 install --upgrade xTerm`
+
+```python
+from xTerm import Maths
+# class shortcut
+maths = Maths(font_type="Sans_Serif")
+# or
+maths = Maths(font_type="Sans_Serif_bold")
+# or
+maths = Maths(font_type="Sans_Serif_italic")
+# or
+maths = Maths(font_type="Sans_Serif_bold_italic")
+# or
+maths = Maths(font_type="Mathematical_bold")
+# or
+maths = Maths(font_type="Mathematical_italic")
+# or
+maths = Maths(font_type="Mathematical_Fraktur")
+# or
+maths = Maths(font_type="Mathematical_bold_Fraktur")
+# or
+maths = Maths(font_type="Mathematical_double_struck")
+# or
+maths = Maths(font_type="Mathematical_monospace")
+# converet string model to any unicode font ,
+converted_text = maths.Convert("Hello World")
+print(converted_text)
+```
+
+---
 ## Alpha Mode (Convert Font String)
 
 Convert String Text To Unicode Font Display
@@ -88,4 +134,9 @@ table = Table([
 
 ---
 
+
 More details : [table](https://github.com/PyxTerm/xTerm/blob/main/docs/table.md)
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PyxTerm/xTerm/HEAD)
+
