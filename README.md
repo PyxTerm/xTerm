@@ -1,6 +1,8 @@
 <img src="https://raw.githubusercontent.com/PyxTerm/xTerm/main/.github/workflows/Typographic.png" title="xterm Python Package" alt="python Package xTerm" width="auto" height="auto"> 
 
 # xTerm
+
+
 ## Install
 
 Windows Install with `pip`
@@ -132,4 +134,9 @@ table = Table([
 
 ---
 
+
 More details : [table](https://github.com/PyxTerm/xTerm/blob/main/docs/table.md)
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PyxTerm/xTerm/HEAD)
+
