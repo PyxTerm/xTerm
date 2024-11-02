@@ -1,8 +1,6 @@
 <img src="https://raw.githubusercontent.com/PyxTerm/xTerm/main/.github/workflows/Typographic.png" title="xterm Python Package" alt="python Package xTerm" width="auto" height="auto"> 
 
 # xTerm
-
-
 ## Install
 
 Windows Install with `pip`
@@ -134,9 +132,32 @@ table = Table([
 
 ---
 
+### Table formatting
 
-More details : [table](https://github.com/PyxTerm/xTerm/blob/main/docs/table.md)
+There is more than one way to format a table in plain text. The third optional argument named tablefmt defines how the
+table is formatted.
 
+Supported table formats are:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PyxTerm/xTerm/HEAD)
+| Parameter    |   Type   | Value             | Parameter    |   Type   | Value             |
+|:-------------|:--------:|:------------------|--------------:|:--------:|:------------------|
+| **tablefmt** | _string_ | `plain`           | **tablefmt** | _string_ | `orgtbl`          |   
+| **tablefmt** | _string_ | `simple`          | **tablefmt** | _string_ | `asciidoc`        |   
+| **tablefmt** | _string_ | `github`          | **tablefmt** | _string_ | `jira`            |   
+| **tablefmt** | _string_ | `grid`            | **tablefmt** | _string_ | `presto`          |   
+| **tablefmt** | _string_ | `simple_grid`     | **tablefmt** | _string_ | `pretty`          |   
+| **tablefmt** | _string_ | `rounded_grid`    | **tablefmt** | _string_ | `psql`            |   
+| **tablefmt** | _string_ | `heavy_grid`      | **tablefmt** | _string_ | `rst`             |   
+| **tablefmt** | _string_ | `mixed_grid`      | **tablefmt** | _string_ | `mediawiki`       |   
+| **tablefmt** | _string_ | `double_grid`     | **tablefmt** | _string_ | `moinmoin`        |   
+| **tablefmt** | _string_ | `fancy_grid`      | **tablefmt** | _string_ | `youtrack`        |   
+| **tablefmt** | _string_ | `outline`         | **tablefmt** | _string_ | `html`            |   
+| **tablefmt** | _string_ | `simple_outline`  | **tablefmt** | _string_ | `unsafehtml`      |   
+| **tablefmt** | _string_ | `rounded_outline` | **tablefmt** | _string_ | `latex`           |   
+| **tablefmt** | _string_ | `heavy_outline`   | **tablefmt** | _string_ | `latex_raw`       |   
+| **tablefmt** | _string_ | `mixed_outline`   | **tablefmt** | _string_ | `latex_booktabs`  |   
+| **tablefmt** | _string_ | `double_outline`  | **tablefmt** | _string_ | `latex_longtable` |   
+| **tablefmt** | _string_ | `fancy_outline`   | **tablefmt** | _string_ | `textile`         |   
+| **tablefmt** | _string_ | `pipe`            | **tablefmt** | _string_ | `tsv`             |   
 
+More details : [table](https://xterm.readthedocs.io/en/latest/table/ 'xTerm Table Terminal') | [Notebook Example](https://deepnote.com/app/vector3/xTerm-5a0d16cf-d30e-4373-8564-4b5f7b2d0ed3)
