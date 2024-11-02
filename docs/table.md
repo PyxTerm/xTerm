@@ -1,3 +1,33 @@
+### Table formatting
+
+There is more than one way to format a table in plain text. The third optional argument named tablefmt defines how the
+table is formatted.
+
+Supported table formats are:
+
+| Parameter    |   Type   | Value             | Parameter    |   Type   | Value             |
+|:-------------|:--------:|:------------------|--------------|:--------:|:------------------|
+| **tablefmt** | _string_ | `plain`           | **tablefmt** | _string_ | `orgtbl`          |   
+| **tablefmt** | _string_ | `simple`          | **tablefmt** | _string_ | `asciidoc`        |   
+| **tablefmt** | _string_ | `github`          | **tablefmt** | _string_ | `jira`            |   
+| **tablefmt** | _string_ | `grid`            | **tablefmt** | _string_ | `presto`          |   
+| **tablefmt** | _string_ | `simple_grid`     | **tablefmt** | _string_ | `pretty`          |   
+| **tablefmt** | _string_ | `rounded_grid`    | **tablefmt** | _string_ | `psql`            |   
+| **tablefmt** | _string_ | `heavy_grid`      | **tablefmt** | _string_ | `rst`             |   
+| **tablefmt** | _string_ | `mixed_grid`      | **tablefmt** | _string_ | `mediawiki`       |   
+| **tablefmt** | _string_ | `double_grid`     | **tablefmt** | _string_ | `moinmoin`        |   
+| **tablefmt** | _string_ | `fancy_grid`      | **tablefmt** | _string_ | `youtrack`        |   
+| **tablefmt** | _string_ | `outline`         | **tablefmt** | _string_ | `html`            |   
+| **tablefmt** | _string_ | `simple_outline`  | **tablefmt** | _string_ | `unsafehtml`      |   
+| **tablefmt** | _string_ | `rounded_outline` | **tablefmt** | _string_ | `latex`           |   
+| **tablefmt** | _string_ | `heavy_outline`   | **tablefmt** | _string_ | `latex_raw`       |   
+| **tablefmt** | _string_ | `mixed_outline`   | **tablefmt** | _string_ | `latex_booktabs`  |   
+| **tablefmt** | _string_ | `double_outline`  | **tablefmt** | _string_ | `latex_longtable` |   
+| **tablefmt** | _string_ | `fancy_outline`   | **tablefmt** | _string_ | `textile`         |   
+| **tablefmt** | _string_ | `pipe`            | **tablefmt** | _string_ | `tsv`             |
+
+---
+
 Format a fixed width table for pretty printing.
 
 ```python
@@ -504,3 +534,402 @@ print(Table(
 # |            |            | better if it is wrapped a bit |
 # +------------+------------+-------------------------------+
 ```
+
+
+---
+
+```python
+products = [
+    ["Laptop", 1299.99],
+    ["Smartphone", 799.99],
+    ["Tablet", 499.49],
+    ["Headphones", 199.95],
+    ["Smartwatch", 249.90],
+]
+
+print(Table(
+    [[item[0], f"${item[1]:,.2f}"] for item in products],
+    headers=["Product", "Price (USD)"],
+    tablefmt="fancy_grid"
+))
+╒════════════╤═══════════════╕
+│ Product    │ Price (USD)   │
+╞════════════╪═══════════════╡
+│ Laptop     │ $1,299.99     │
+├────────────┼───────────────┤
+│ Smartphone │ $799.99       │
+├────────────┼───────────────┤
+│ Tablet     │ $499.49       │
+├────────────┼───────────────┤
+│ Headphones │ $199.95       │
+├────────────┼───────────────┤
+│ Smartwatch │ $249.90       │
+╘════════════╧═══════════════╛
+
+```
+
+---
+
+```python
+employees = [
+    ["John Doe", 56000, 4],
+    ["Jane Smith", 78000, 5],
+    ["Emily Davis", 62000, 3],
+    ["Michael Johnson", 85000, 4],
+    ["Sarah Lee", 50000, 2],
+]
+
+print(Table(
+    [[emp[0], f"${emp[1]:,}", "★" * emp[2]] for emp in employees],
+    headers=["Employee", "Salary", "Rating"],
+    tablefmt="rounded_outline"
+))
+╭─────────────────┬──────────┬──────────╮
+│ Employee        │ Salary   │ Rating   │
+├─────────────────┼──────────┼──────────┤
+│ John Doe        │ $56,000  │ ★★★★     │
+│ Jane Smith      │ $78,000  │ ★★★★★    │
+│ Emily Davis     │ $62,000  │ ★★★      │
+│ Michael Johnson │ $85,000  │ ★★★★     │
+│ Sarah Lee       │ $50,000  │ ★★       │
+╰─────────────────┴──────────┴──────────╯
+```
+
+---
+
+```python
+sensors = [
+    ["Sensor A", 23.5, "Normal"],
+    ["Sensor B", 28.1, "Alert"],
+    ["Sensor C", 21.3, "Normal"],
+    ["Sensor D", 30.7, "Critical"],
+    ["Sensor E", 25.0, "Normal"],
+]
+
+print(Table(
+    [[sensor[0], f"{sensor[1]}°C", sensor[2]] for sensor in sensors],
+    headers=["Sensor", "Temperature", "Status"],
+    tablefmt="grid"
+))
++----------+---------------+----------+
+| Sensor   | Temperature   | Status   |
++==========+===============+==========+
+| Sensor A | 23.5°C        | Normal   |
++----------+---------------+----------+
+| Sensor B | 28.1°C        | Alert    |
++----------+---------------+----------+
+| Sensor C | 21.3°C        | Normal   |
++----------+---------------+----------+
+| Sensor D | 30.7°C        | Critical |
++----------+---------------+----------+
+| Sensor E | 25.0°C        | Normal   |
++----------+---------------+----------+
+
+```
+
+---
+
+```python
+tasks = [
+    ["Database Migration", "In Progress", 45],
+    ["API Development", "Completed", 100],
+    ["Frontend Design", "In Progress", 60],
+    ["Backend Optimization", "Not Started", 0],
+    ["Testing & QA", "Pending", 20],
+]
+
+print(Table(
+    [[task[0], task[1], f"{task[2]}%"] for task in tasks],
+    headers=["Task", "Status", "Progress"],
+    tablefmt="pipe"
+))
+
+| Task                 | Status      | Progress   |
+|:---------------------|:------------|:-----------|
+| Database Migration   | In Progress | 45%        |
+| API Development      | Completed   | 100%       |
+| Frontend Design      | In Progress | 60%        |
+| Backend Optimization | Not Started | 0%         |
+| Testing & QA         | Pending     | 20%        |
+
+```
+
+---
+
+```python
+students = [
+    ["Ali", [85, 90, 78], 84.33],
+    ["Sara", [92, 88, 95], 91.67],
+    ["Reza", [70, 65, 75], 70.00],
+    ["Mina", [88, 80, 82], 83.33],
+    ["Hassan", [60, 55, 65], 60.00],
+]
+
+print(Table(
+    [[
+        student[0],
+        ", ".join(map(str, student[1])),
+        f"{student[2]:.2f}",
+        f"{student[2] * 100 / 100:.1f}%"
+    ] for student in students],
+    headers=["Student", "Scores", "Average", "Percentage"],
+    tablefmt="psql"
+))
+
++-----------+------------+-----------+--------------+
+| Student   | Scores     |   Average | Percentage   |
+|-----------+------------+-----------+--------------|
+| Ali       | 85, 90, 78 |     84.33 | 84.3%        |
+| Sara      | 92, 88, 95 |     91.67 | 91.7%        |
+| Reza      | 70, 65, 75 |     70    | 70.0%        |
+| Mina      | 88, 80, 82 |     83.33 | 83.3%        |
+| Hassan    | 60, 55, 65 |     60    | 60.0%        |
++-----------+------------+-----------+--------------+
+
+```
+
+
+---
+
+```python
+devices = [
+    ["Router", "Online", "2024-10-31 14:30"],
+    ["Switch", "Offline", "2024-10-31 08:15"],
+    ["Firewall", "Online", "2024-10-30 23:45"],
+    ["Access Point", "Maintenance", "2024-10-31 12:20"],
+    ["Server", "Online", "2024-10-31 13:55"],
+]
+
+print(Table(
+    devices,
+    headers=["Device", "Status", "Last Update"],
+    tablefmt="github"
+))
+
+| Device       | Status      | Last Update      |
+|--------------|-------------|------------------|
+| Router       | Online      | 2024-10-31 14:30 |
+| Switch       | Offline     | 2024-10-31 08:15 |
+| Firewall     | Online      | 2024-10-30 23:45 |
+| Access Point | Maintenance | 2024-10-31 12:20 |
+| Server       | Online      | 2024-10-31 13:55 |
+
+```
+
+---
+
+```python
+financial_report = [
+    ["2020", "$1,200,000", "$800,000", "$400,000", "12.5%"],
+    ["2021", "$1,350,000", "$900,000", "$450,000", "13.2%"],
+    ["2022", "$1,500,000", "$950,000", "$550,000", "15.3%"],
+    ["2023", "$1,800,000", "$1,000,000", "$800,000", "18.2%"],
+]
+
+print(Table(
+    financial_report,
+    headers=["Year", "Revenue", "Expenses", "Net Profit", "Growth Rate"],
+    tablefmt="fancy_grid",
+    stralign="center",
+    numalign="right"
+))
+
+╒════════╤════════════╤════════════╤══════════════╤═══════════════╕
+│   Year │  Revenue   │  Expenses  │  Net Profit  │  Growth Rate  │
+╞════════╪════════════╪════════════╪══════════════╪═══════════════╡
+│   2020 │ $1,200,000 │  $800,000  │   $400,000   │     12.5%     │
+├────────┼────────────┼────────────┼──────────────┼───────────────┤
+│   2021 │ $1,350,000 │  $900,000  │   $450,000   │     13.2%     │
+├────────┼────────────┼────────────┼──────────────┼───────────────┤
+│   2022 │ $1,500,000 │  $950,000  │   $550,000   │     15.3%     │
+├────────┼────────────┼────────────┼──────────────┼───────────────┤
+│   2023 │ $1,800,000 │ $1,000,000 │   $800,000   │     18.2%     │
+╘════════╧════════════╧════════════╧══════════════╧═══════════════╛
+
+```
+
+---
+
+```python
+projects = [
+    ["Website Redesign", "2024-09-01", "12 days", "In Progress"],
+    ["Mobile App", "2024-08-15", "5 days", "Completed"],
+    ["Backend API", "2024-10-10", "3 days", "Testing"],
+    ["Cloud Migration", "2024-07-30", "18 days", "Pending"],
+    ["Security Update", "2024-08-25", "15 days", "In Progress"],
+]
+
+print(Table(
+    projects,
+    headers=["Project", "Start Date", "Time Remaining", "Status"],
+    tablefmt="rounded_outline",
+    stralign="center"
+))
+
+╭──────────────────┬──────────────┬──────────────────┬─────────────╮
+│     Project      │  Start Date  │  Time Remaining  │   Status    │
+├──────────────────┼──────────────┼──────────────────┼─────────────┤
+│ Website Redesign │  2024-09-01  │     12 days      │ In Progress │
+│    Mobile App    │  2024-08-15  │      5 days      │  Completed  │
+│   Backend API    │  2024-10-10  │      3 days      │   Testing   │
+│ Cloud Migration  │  2024-07-30  │     18 days      │   Pending   │
+│ Security Update  │  2024-08-25  │     15 days      │ In Progress │
+╰──────────────────┴──────────────┴──────────────────┴─────────────╯
+
+```
+
+---
+
+```python
+students = [
+    ["Ali", [85, 90, 78, 88], 85.25, "Passed"],
+    ["Sara", [92, 88, 95, 96], 92.75, "Passed"],
+    ["Reza", [70, 65, 75, 68], 69.5, "Failed"],
+    ["Mina", [88, 80, 82, 86], 84.0, "Passed"],
+    ["Hassan", [60, 55, 65, 59], 59.75, "Failed"],
+]
+
+print(Table(
+    [[student[0], ", ".join(map(str, student[1])), f"{student[2]:.2f}", student[3]] for student in students],
+    headers=["Student", "Scores", "Average", "Status"],
+    tablefmt="psql",
+    stralign="center",
+    numalign="right"
+))
+
++-----------+----------------+-----------+----------+
+|  Student  |     Scores     |   Average |  Status  |
+|-----------+----------------+-----------+----------|
+|    Ali    | 85, 90, 78, 88 |     85.25 |  Passed  |
+|   Sara    | 92, 88, 95, 96 |     92.75 |  Passed  |
+|   Reza    | 70, 65, 75, 68 |      69.5 |  Failed  |
+|   Mina    | 88, 80, 82, 86 |        84 |  Passed  |
+|  Hassan   | 60, 55, 65, 59 |     59.75 |  Failed  |
++-----------+----------------+-----------+----------+
+
+```
+
+---
+
+```python
+servers = [
+    ["Server 1", "192.168.1.10", "Online", "75%", "65%"],
+    ["Server 2", "192.168.1.20", "Offline", "-", "-"],
+    ["Server 3", "192.168.1.30", "Maintenance", "40%", "50%"],
+    ["Server 4", "192.168.1.40", "Online", "60%", "70%"],
+    ["Server 5", "192.168.1.50", "Online", "85%", "90%"],
+]
+
+print(Table(
+    servers,
+    headers=["Server", "IP Address", "Status", "CPU Usage", "Memory Usage"],
+    tablefmt="github",
+    stralign="center"
+))
+
+|  Server  |  IP Address  |   Status    |  CPU Usage  |  Memory Usage  |
+|----------|--------------|-------------|-------------|----------------|
+| Server 1 | 192.168.1.10 |   Online    |     75%     |      65%       |
+| Server 2 | 192.168.1.20 |   Offline   |      -      |       -        |
+| Server 3 | 192.168.1.30 | Maintenance |     40%     |      50%       |
+| Server 4 | 192.168.1.40 |   Online    |     60%     |      70%       |
+| Server 5 | 192.168.1.50 |   Online    |     85%     |      90%       |
+
+```
+
+---
+
+```python
+employees = [
+    ["John Doe", 5, "$70,000", "★★★★☆", "Excellent"],
+    ["Jane Smith", 2, "$50,000", "★★★☆☆", "Good"],
+    ["Emily Davis", 7, "$85,000", "★★★★★", "Outstanding"],
+    ["Michael Brown", 4, "$60,000", "★★★☆☆", "Average"],
+    ["Sarah Lee", 3, "$55,000", "★★★☆☆", "Good"],
+]
+
+print(Table(
+    employees,
+    headers=["Employee", "Experience (Years)", "Salary", "Rating", "Evaluation"],
+    tablefmt="pipe",
+    stralign="center"
+))
+
+|   Employee    |   Experience (Years) |  Salary  |  Rating  |  Evaluation  |
+|:-------------:|---------------------:|:--------:|:--------:|:------------:|
+|   John Doe    |                    5 | $70,000  |  ★★★★☆   |  Excellent   |
+|  Jane Smith   |                    2 | $50,000  |  ★★★☆☆   |     Good     |
+|  Emily Davis  |                    7 | $85,000  |  ★★★★★   | Outstanding  |
+| Michael Brown |                    4 | $60,000  |  ★★★☆☆   |   Average    |
+|   Sarah Lee   |                    3 | $55,000  |  ★★★☆☆   |     Good     |
+
+```
+---
+
+```python
+crypto_assets = [
+    ["Bitcoin", 2.5, "$60,000", "$150,000"],
+    ["Ethereum", 10, "$4,000", "$40,000"],
+    ["Ripple", 5000, "$0.50", "$2,500"],
+    ["Litecoin", 15, "$150", "$2,250"],
+    ["Cardano", 2000, "$2.10", "$4,200"],
+]
+
+print(Table(
+    crypto_assets,
+    headers=["Asset", "Quantity", "Price per Unit", "Total Value"],
+    tablefmt="fancy_grid",
+    numalign="right"
+))
+
+╒══════════╤════════════╤══════════════════╤═══════════════╕
+│ Asset    │   Quantity │ Price per Unit   │ Total Value   │
+╞══════════╪════════════╪══════════════════╪═══════════════╡
+│ Bitcoin  │        2.5 │ $60,000          │ $150,000      │
+├──────────┼────────────┼──────────────────┼───────────────┤
+│ Ethereum │         10 │ $4,000           │ $40,000       │
+├──────────┼────────────┼──────────────────┼───────────────┤
+│ Ripple   │       5000 │ $0.50            │ $2,500        │
+├──────────┼────────────┼──────────────────┼───────────────┤
+│ Litecoin │         15 │ $150             │ $2,250        │
+├──────────┼────────────┼──────────────────┼───────────────┤
+│ Cardano  │       2000 │ $2.10            │ $4,200        │
+╘══════════╧════════════╧══════════════════╧═══════════════╛
+
+```
+
+---
+
+```python
+matches = [
+    ["Team A", "Team B", 3, 2, "Team A"],
+    ["Team C", "Team D", 1, 1, "Draw"],
+    ["Team E", "Team F", 0, 2, "Team F"],
+    ["Team G", "Team H", 4, 1, "Team G"],
+    ["Team I", "Team J", 2, 2, "Draw"],
+]
+
+print(Table(
+    matches,
+    headers=["Home Team", "Away Team", "Home Score", "Away Score", "Result"],
+    tablefmt="grid",
+    stralign="center",
+    numalign="right"
+))
+
++-------------+-------------+--------------+--------------+----------+
+|  Home Team  |  Away Team  |   Home Score |   Away Score |  Result  |
++=============+=============+==============+==============+==========+
+|   Team A    |   Team B    |            3 |            2 |  Team A  |
++-------------+-------------+--------------+--------------+----------+
+|   Team C    |   Team D    |            1 |            1 |   Draw   |
++-------------+-------------+--------------+--------------+----------+
+|   Team E    |   Team F    |            0 |            2 |  Team F  |
++-------------+-------------+--------------+--------------+----------+
+|   Team G    |   Team H    |            4 |            1 |  Team G  |
++-------------+-------------+--------------+--------------+----------+
+|   Team I    |   Team J    |            2 |            2 |   Draw   |
++-------------+-------------+--------------+--------------+----------+
+
+```
+
