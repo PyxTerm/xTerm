@@ -28,7 +28,7 @@ PACK_DATA = {
 
 setup(
     name=PACK_DATA["NAME"],
-    version="1.6.0",
+    version="1.6.3",
     packages=find_packages(),
     install_requires=[],
     test_suite='tests',
